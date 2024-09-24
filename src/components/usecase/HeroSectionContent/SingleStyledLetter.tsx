@@ -1,12 +1,14 @@
 import React from 'react'
 
 type IProps = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    index: number
 }
 
-const SingleStyledLetter: React.FC<IProps> = ({ children }) => {
+const SingleStyledLetter: React.FC<IProps> = ({ children, index }) => {
+    const delay = `${index * 0.05}s`;
     return (
-        <div>{children}</div>
+        <div className="letter" style={{ animationDelay: delay }}>{children}</div>
     )
 }
 
