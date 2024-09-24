@@ -1,3 +1,8 @@
+:root {
+  --primary: #0841DE;
+  --btnAnimationDelay: 0.6s;
+} 
+
 *,*::before,*::after {
   margin: 0%;
   padding: 0%;
@@ -22,3 +27,4 @@ html,body {
   vertical-align: middle;
   fill: currentColor;
 }
+

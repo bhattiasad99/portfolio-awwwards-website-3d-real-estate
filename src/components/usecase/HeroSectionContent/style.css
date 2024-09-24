@@ -3,13 +3,14 @@
 }
 
 .hero-word {
-    margin-right:1rem;
-    display:flex;
+    margin-right: 1rem;
+    display: flex;
 }
 
 .hero-text-line {
     display: flex;
-    overflow: hidden;
+    /* transform: translateY(100%); */
+    animation: translateYToNormal 1s ease-out 0s forwards;
 }
 
 .hero-container {
@@ -17,18 +18,89 @@
 }
 
 .letter {
-    opacity: 0; 
-    animation: tiltToStraight 1000ms ease-in forwards;
+    /* Initial transform state */
+    transform: translateY(calc(20px + var(--index) * 20px)) rotateZ(calc(25deg + var(--index) * 6deg));
+    display: inline-block;
+    opacity: 1;
+    animation: returnLetterToNormal 1s ease-out calc(var(--index) * 0.1s) forwards;
+    animation-delay: 0ms;
 }
 
-@keyframes tiltToStraight {
-    0% {
-        opacity: 0;
-        transform: translateY(100%) rotateZ(50deg);
-    }
 
+.hero-btn {
+    padding: 12px 24px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.hero-btn span {
+    transition: all var(--btnAnimationDelay) ease-out, opacity var(--btnAnimationDelay) ease-out;
+    color: var(--primary);
+    display: inline-block;
+    position: relative;
+    transform: translateY(0); /* Initial state */
+    opacity: 1; /* Initial state */
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    z-index: 2;
+    transition: all var(--btnAnimationDelay) ease-out;
+    transform: translateY(100%);
+}
+
+.hero-btn::after {
+    content: 'LEARN MORE';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-200%);
+    transition: all var(--btnAnimationDelay) ease-out;
+    color: #ffffff;
+    z-index: 3;
+
+}
+
+.hero-btn:hover::after {
+    top: 50%;
+    transform: translateY(-50%); 
+    
+}
+
+.hero-btn:hover::before {
+    transform: translateY(0%);
+}
+
+/* Moves the text downward when hovering */
+.hero-btn:hover span {
+    transform: translateY(200%);
+    opacity: 0;
+}
+
+@keyframes translateYToNormal {
+    0% {
+        transform: translateY(100%);
+    }
     100% {
-        opacity: 1;
-        transform: translateY(0%) rotateZ(0deg);
+        
+        transform: translateY(0%);
+    }
+}
+
+@keyframes returnLetterToNormal {
+    100% {
+        transform: translateY(0px) rotateZ(0deg);
     }
 }

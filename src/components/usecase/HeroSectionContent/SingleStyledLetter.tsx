@@ -6,9 +6,10 @@ type IProps = {
 }
 
 const SingleStyledLetter: React.FC<IProps> = ({ children, index }) => {
-    const delay = `${index * 0.05}s`;
     return (
-        <div className="letter" style={{ animationDelay: delay }}>{children}</div>
+        <div className="letter" style={{
+            '--index': index
+        } as React.CSSProperties}>{children}</div>
     )
 }
 

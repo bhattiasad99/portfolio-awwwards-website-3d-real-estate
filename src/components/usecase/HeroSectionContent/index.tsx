@@ -14,7 +14,7 @@ const HeroSectionContent = () => {
 
     return (
         <StackComponent direction='column' style={{ alignItems: 'flex-start', position: 'absolute', bottom: '100px', left: '10vw' }}>
-            <TypographyComponent className='hero-heading' style={{}} variant='h1'>
+            <TypographyComponent className='hero-heading' variant='h1'>
                 <div className='hero-container'>
                     <div className="hero-text-line line-1">
                         <div className='hero-word'>
@@ -38,7 +38,12 @@ const HeroSectionContent = () => {
                     </div>
                 </div>
             </TypographyComponent>
-            <TypographyComponent style={{ color: "#ffffff" }}>Create a Digital Twin Token (DTT®) of your existing building and release the potential of Web3.</TypographyComponent>
+            <StackComponent justifyContent='flex-start' alignItems='flex-end' style={{ color: "#ffffff", fontSize: '1.2rem', fontWeight: 200 }}>
+                <TypographyComponent style={{ marginRight: '2rem', width: '40%' }}>Create a Digital Twin Token (DTT®) of your existing building and release the potential of Web3.</TypographyComponent>
+                <button className='hero-btn'>
+                    <span>Learn More</span>
+                </button>
+            </StackComponent>
         </StackComponent>
     )
 }
